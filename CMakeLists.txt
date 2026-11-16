@@ -6,14 +6,17 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # libs
 include(functions)
 
-file(GLOB_RECURSE INO_FILES ${CMAKE_CURRENT_SOURCE_DIR}/examples/*.ino)
 set(SRC_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 file(GLOB SRC_FILES ${SRC_DIR}/*.cpp)
 file(GLOB HPP_FILES ${SRC_DIR}/*.hpp)
-list(APPEND DEP_FILES ${HPP_FILES} ${SRC_FILES} ${INO_FILES})
+list(APPEND DEP_FILES ${HPP_FILES} ${SRC_FILES})
 
-option(ENABLE_EXAMPLES "Compile examples" ON)
+option(ENABLE_EXAMPLES "Compile examples" OFF)
+
 if(ENABLE_EXAMPLES)
+  file(GLOB_RECURSE INO_FILES ${CMAKE_CURRENT_SOURCE_DIR}/examples/*.ino)
+  list(APPEND DEP_FILES ${INO_FILES})
+
   find_arduino_cli_executable()
   if(ARDUINO_CLI_EXECUTABLE)
     # firmware examples
@@ -29,8 +32,6 @@ endif(ENABLE_EXAMPLES)
 
 # tests
 option(ENABLE_TESTS "Activate tests" OFF)
-if(ENABLE_TESTS)
-  include(tests)
-endif(ENABLE_TESTS)
+include(tests)
 
 set_property(DIRECTORY PROPERTY ADDITIONAL_CLEAN_FILES "arduino-cli cache clean")
