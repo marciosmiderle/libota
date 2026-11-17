@@ -20,7 +20,7 @@ function(add_arduino_firmware_target INO_FULL_FILENAME TYPE IS_ALL_TARGET)
   if(TYPE STREQUAL "debug")
     set(EXTRA_FLAGS "--optimize-for-debug")
   endif()
-  
+
   add_custom_command(
     OUTPUT "${FIRMWARE_BIN}" "${FIRMWARE_MAP}" "${FIRMWARE_ELF}" "${FIRMWARE_MBIN}" "${FIRMWARE_PART}" "${FIRMWARE_MD5}"
     COMMAND "${ARDUINO_CLI_EXECUTABLE}" compile
@@ -48,11 +48,6 @@ function(add_arduino_firmware_target INO_FULL_FILENAME TYPE IS_ALL_TARGET)
     endif()
   endif()
   add_dependencies(${GROUP_TARGET} ${TARGET_NAME})
-
-  if(NOT TARGET examples)
-    add_custom_target(examples)
-  endif()
-  add_dependencies(examples ${GROUP_TARGET})
 
   set_property(TARGET ${TARGET_NAME} APPEND PROPERTY
     ADDITIONAL_CLEAN_FILES "${FIRMWARE_MD5}"

@@ -9,8 +9,8 @@ class HttpTestServer {
   std::thread th;
 
 public:
-  static constexpr const char* ROOT_DIR = WWW_DIR;
-  static constexpr const int   PORT     = 8080;
+  std::string ROOT_DIR = "WWW_DIR";
+  int         PORT     = 8080;
 
   std::string request;
   std::string response;

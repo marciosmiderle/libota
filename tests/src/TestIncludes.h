@@ -16,7 +16,6 @@
 #endif
 
 #include <Arduino.h>
-#include "mocks/ESP.h"
 #include "mocks/millis.h"
 
 #undef Logger

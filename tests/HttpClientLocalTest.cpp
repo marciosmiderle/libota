@@ -43,7 +43,7 @@ TEST_GROUP(HttpClientLocal) {
   using Phase = HttpClientLocal::Phase;
 
   static constexpr const char* HOSTNAME  = "localhost";
-  static const           int   PORT      = HttpTestServer::PORT;
+  static const           int   PORT      = 8080;
   static constexpr const char* URI       = "/";
   static constexpr const char* file_name = "firmware.bin.md5";
   const std::string            file_path = std::string(FIXTURES_DIR)       + path_sep + file_name;
@@ -63,6 +63,8 @@ TEST_GROUP(HttpClientLocal) {
   void setup() {
     millis_set(START_MS);  // sem isso um teste herda o tempo do anterior
     recreate(maxQueue, maxRetries);
+    server.ROOT_DIR = WWW_DIR;
+    server.PORT = PORT;
     server.start();
   }
 

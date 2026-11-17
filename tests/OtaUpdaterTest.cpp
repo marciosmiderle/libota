@@ -11,12 +11,8 @@ TEST_GROUP(OtaUpdater) {
   using StepState = OtaUpdater::StepState;
 
   static constexpr const char* HOSTNAME = "localhost";
-  //static const           int   PORT     = HttpTestServer::PORT;
   static const           int   PORT     = 8080;
   static constexpr const char* URI      = "/";
-  // static constexpr const char* HOSTNAME = "httpbin.org";
-  // static const           int   PORT     = 80;
-  // static constexpr const char* URI      = "/post";
   static constexpr const char* firmwareUrl = "http://localhost:8080/tests/fixtures/firmware.bin";
 
   // millis() só anda com millis_forward().
@@ -29,6 +25,8 @@ TEST_GROUP(OtaUpdater) {
   void setup() {
     millis_set(START_MS);  // sem isso um teste herda o tempo do anterior
     recreate();
+    server.ROOT_DIR = WWW_DIR;
+    server.PORT = PORT;
     server.start();
   }
 

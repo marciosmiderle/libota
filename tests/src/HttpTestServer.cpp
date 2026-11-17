@@ -71,7 +71,7 @@ void HttpTestServer::start() {
   if (!server.set_mount_point("/", ROOT_DIR)) {
     std::clog << "[HttpTestServer] AVISO: Pasta (" << ROOT_DIR << ") indisponível." << std::endl;
   }
-  std::clog << "[HttpTestServer] Serving dir (" << WWW_DIR << ")" << std::endl;
+  std::clog << "[HttpTestServer] Serving dir (" << ROOT_DIR << ")" << std::endl;
 
   th = std::thread([this] { serve(); });
   server.wait_until_ready();
