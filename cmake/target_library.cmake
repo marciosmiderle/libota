@@ -38,7 +38,7 @@ target_compile_options(LibOTA PRIVATE
   $<$<COMPILE_LANGUAGE:CXX>:-include;${TEST_DIR}/src/TestIncludes.h>
 )
 
-if(ENABLE_TESTS)
+if(LIBOTA_ENABLE_TESTS)
   target_compile_definitions(LibOTA PRIVATE
     FIXTURES_DIR="${FIXTURES_DEST_DIR}"
     WWW_DIR="${CMAKE_BINARY_DIR}"

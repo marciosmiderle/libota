@@ -2,7 +2,7 @@ include(CheckCXXCompilerFlag)
 
 set(SANITIZERS_FLAGS "")
 
-if(ENABLE_SANITIZERS)
+if(LIBOTA_ENABLE_SANITIZERS)
   check_cxx_compiler_flag("-fsanitize=address" HAS_ASAN)
   if(HAS_ASAN)
     list(APPEND SANITIZERS_FLAGS "-fsanitize=address")
