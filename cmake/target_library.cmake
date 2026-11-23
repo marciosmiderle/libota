@@ -28,7 +28,7 @@ if(TARGET CppUTest)
 endif()
 
 if(WIN32)
-  target_link_libraries(LibOTA PUBLIC iphlpapi)
+  target_link_libraries(arduino_emulator PUBLIC iphlpapi)
 endif()
 
 target_compile_options(LibOTA PRIVATE
