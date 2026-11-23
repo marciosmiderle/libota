@@ -4,9 +4,6 @@
 
 // Injeção Global de Mocks e Compatibilidade
 
-#define TEST_BUILD
-#define HTTPCLIENT_NOSECURE
-
 // handle name conflits
 #define Logger EmulatorLogger
 #define main main_arduino_emulator

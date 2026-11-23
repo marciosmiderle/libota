@@ -15,6 +15,7 @@ FetchContent_Declare(
 
 if(LIBOTA_ENABLE_TESTS)
 
+  set(USE_HTTPS false)
   FetchContent_MakeAvailable(arduino_emulator cpp-httplib)
   include(${arduino_emulator_SOURCE_DIR}/Arduino.cmake)
   arduino_library(PubSubClient https://github.com/knolleary/pubsubclient.git v2.8)

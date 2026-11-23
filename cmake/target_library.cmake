@@ -49,6 +49,7 @@ set(SPECIFIC_OBJS ${TEST_DIR}/mocks/snarfed/HTTPClient.cpp)
 set_source_files_properties(${SPECIFIC_OBJS}
   PROPERTIES COMPILE_OPTIONS
   "$<$<COMPILE_LANGUAGE:CXX>:-include;${SRC_DIR}/os_posix_compat.hpp>"
+  COMPILE_DEFINITIONS "HTTPCLIENT_NOSECURE"
 )
 
 target_apply_sanitizers(LibOTA)
